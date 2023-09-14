@@ -1,5 +1,5 @@
 #!/bin/bash
-for ((y=1950; y<=2021;++y))
+for ((y=1950; y<=2022;++y))
 do
    echo $y 
 
@@ -12,7 +12,7 @@ cdo -b 32 -chname,u10,A -mulc,57.2957805 -atan2 era5_land_hourly_10m_u_component
 cdo expr,'Ufv=U*0.4/ln(10/0.001);' era5_land_U_"$((y))"01.nc era5_land_Ufv_"$((y))"01.nc
 #mask wind speed ≤ threshold friction velocity, effective friction velocity
 cdo -chname,Ufv,Uefv -setrtomiss,0,0.2770001 era5_land_Ufv_"$((y))"01.nc era5_land_Uefv_"$((y))"01.nc
-#caculate possible bulk-volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
+#caculate possible volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
 cdo expr,'qb=5*0.277/9.81*1.22/2650*(Uefv*Uefv-0.277*0.277);' era5_land_Uefv_"$((y))"01.nc era5_land_qb_"$((y))"01.nc
 #mask all azimuths with effective friction velocity, effective friction azimuth
 cdo ifthen era5_land_qb_"$((y))"01.nc era5_land_A_"$((y))"01.nc era5_land_A_ifthen_"$((y))"01.nc
@@ -34,7 +34,7 @@ cdo -b 32 -chname,u10,A -mulc,57.2957805 -atan2 era5_land_hourly_10m_u_component
 cdo expr,'Ufv=U*0.4/ln(10/0.001);' era5_land_U_"$((y))"02.nc era5_land_Ufv_"$((y))"02.nc
 #mask wind speed ≤ threshold friction velocity, effective friction velocity
 cdo -chname,Ufv,Uefv -setrtomiss,0,0.2770001 era5_land_Ufv_"$((y))"02.nc era5_land_Uefv_"$((y))"02.nc
-#caculate possible bulk-volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
+#caculate possible volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
 cdo expr,'qb=5*0.277/9.81*1.22/2650*(Uefv*Uefv-0.277*0.277);' era5_land_Uefv_"$((y))"02.nc era5_land_qb_"$((y))"02.nc
 #mask all azimuths with effective friction velocity, effective friction azimuth
 cdo ifthen era5_land_qb_"$((y))"02.nc era5_land_A_"$((y))"02.nc era5_land_A_ifthen_"$((y))"02.nc
@@ -56,7 +56,7 @@ cdo -b 32 -chname,u10,A -mulc,57.2957805 -atan2 era5_land_hourly_10m_u_component
 cdo expr,'Ufv=U*0.4/ln(10/0.001);' era5_land_U_"$((y))"03.nc era5_land_Ufv_"$((y))"03.nc
 #mask wind speed ≤ threshold friction velocity, effective friction velocity
 cdo -chname,Ufv,Uefv -setrtomiss,0,0.2770001 era5_land_Ufv_"$((y))"03.nc era5_land_Uefv_"$((y))"03.nc
-#caculate possible bulk-volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
+#caculate possible volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
 cdo expr,'qb=5*0.277/9.81*1.22/2650*(Uefv*Uefv-0.277*0.277);' era5_land_Uefv_"$((y))"03.nc era5_land_qb_"$((y))"03.nc
 #mask all azimuths with effective friction velocity, effective friction azimuth
 cdo ifthen era5_land_qb_"$((y))"03.nc era5_land_A_"$((y))"03.nc era5_land_A_ifthen_"$((y))"03.nc
@@ -78,7 +78,7 @@ cdo -b 32 -chname,u10,A -mulc,57.2957805 -atan2 era5_land_hourly_10m_u_component
 cdo expr,'Ufv=U*0.4/ln(10/0.001);' era5_land_U_"$((y))"04.nc era5_land_Ufv_"$((y))"04.nc
 #mask wind speed ≤ threshold friction velocity, effective friction velocity
 cdo -chname,Ufv,Uefv -setrtomiss,0,0.2770001 era5_land_Ufv_"$((y))"04.nc era5_land_Uefv_"$((y))"04.nc
-#caculate possible bulk-volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
+#caculate possible volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
 cdo expr,'qb=5*0.277/9.81*1.22/2650*(Uefv*Uefv-0.277*0.277);' era5_land_Uefv_"$((y))"04.nc era5_land_qb_"$((y))"04.nc
 #mask all azimuths with effective friction velocity, effective friction azimuth
 cdo ifthen era5_land_qb_"$((y))"04.nc era5_land_A_"$((y))"04.nc era5_land_A_ifthen_"$((y))"04.nc
@@ -100,7 +100,7 @@ cdo -b 32 -chname,u10,A -mulc,57.2957805 -atan2 era5_land_hourly_10m_u_component
 cdo expr,'Ufv=U*0.4/ln(10/0.001);' era5_land_U_"$((y))"05.nc era5_land_Ufv_"$((y))"05.nc
 #mask wind speed ≤ threshold friction velocity, effective friction velocity
 cdo -chname,Ufv,Uefv -setrtomiss,0,0.2770001 era5_land_Ufv_"$((y))"05.nc era5_land_Uefv_"$((y))"05.nc
-#caculate possible bulk-volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
+#caculate possible volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
 cdo expr,'qb=5*0.277/9.81*1.22/2650*(Uefv*Uefv-0.277*0.277);' era5_land_Uefv_"$((y))"05.nc era5_land_qb_"$((y))"05.nc
 #mask all azimuths with effective friction velocity, effective friction azimuth
 cdo ifthen era5_land_qb_"$((y))"05.nc era5_land_A_"$((y))"05.nc era5_land_A_ifthen_"$((y))"05.nc
@@ -122,7 +122,7 @@ cdo -b 32 -chname,u10,A -mulc,57.2957805 -atan2 era5_land_hourly_10m_u_component
 cdo expr,'Ufv=U*0.4/ln(10/0.001);' era5_land_U_"$((y))"06.nc era5_land_Ufv_"$((y))"06.nc
 #mask wind speed ≤ threshold friction velocity, effective friction velocity
 cdo -chname,Ufv,Uefv -setrtomiss,0,0.2770001 era5_land_Ufv_"$((y))"06.nc era5_land_Uefv_"$((y))"06.nc
-#caculate possible bulk-volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
+#caculate possible volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
 cdo expr,'qb=5*0.277/9.81*1.22/2650*(Uefv*Uefv-0.277*0.277);' era5_land_Uefv_"$((y))"06.nc era5_land_qb_"$((y))"06.nc
 #mask all azimuths with effective friction velocity, effective friction azimuth
 cdo ifthen era5_land_qb_"$((y))"06.nc era5_land_A_"$((y))"06.nc era5_land_A_ifthen_"$((y))"06.nc
@@ -144,7 +144,7 @@ cdo -b 32 -chname,u10,A -mulc,57.2957805 -atan2 era5_land_hourly_10m_u_component
 cdo expr,'Ufv=U*0.4/ln(10/0.001);' era5_land_U_"$((y))"07.nc era5_land_Ufv_"$((y))"07.nc
 #mask wind speed ≤ threshold friction velocity, effective friction velocity
 cdo -chname,Ufv,Uefv -setrtomiss,0,0.2770001 era5_land_Ufv_"$((y))"07.nc era5_land_Uefv_"$((y))"07.nc
-#caculate possible bulk-volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
+#caculate possible volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
 cdo expr,'qb=5*0.277/9.81*1.22/2650*(Uefv*Uefv-0.277*0.277);' era5_land_Uefv_"$((y))"07.nc era5_land_qb_"$((y))"07.nc
 #mask all azimuths with effective friction velocity, effective friction azimuth
 cdo ifthen era5_land_qb_"$((y))"07.nc era5_land_A_"$((y))"07.nc era5_land_A_ifthen_"$((y))"07.nc
@@ -166,7 +166,7 @@ cdo -b 32 -chname,u10,A -mulc,57.2957805 -atan2 era5_land_hourly_10m_u_component
 cdo expr,'Ufv=U*0.4/ln(10/0.001);' era5_land_U_"$((y))"08.nc era5_land_Ufv_"$((y))"08.nc
 #mask wind speed ≤ threshold friction velocity, effective friction velocity
 cdo -chname,Ufv,Uefv -setrtomiss,0,0.2770001 era5_land_Ufv_"$((y))"08.nc era5_land_Uefv_"$((y))"08.nc
-#caculate possible bulk-volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
+#caculate possible volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
 cdo expr,'qb=5*0.277/9.81*1.22/2650*(Uefv*Uefv-0.277*0.277);' era5_land_Uefv_"$((y))"08.nc era5_land_qb_"$((y))"08.nc
 #mask all azimuths with effective friction velocity, effective friction azimuth
 cdo ifthen era5_land_qb_"$((y))"08.nc era5_land_A_"$((y))"08.nc era5_land_A_ifthen_"$((y))"08.nc
@@ -188,7 +188,7 @@ cdo -b 32 -chname,u10,A -mulc,57.2957805 -atan2 era5_land_hourly_10m_u_component
 cdo expr,'Ufv=U*0.4/ln(10/0.001);' era5_land_U_"$((y))"09.nc era5_land_Ufv_"$((y))"09.nc
 #mask wind speed ≤ threshold friction velocity, effective friction velocity
 cdo -chname,Ufv,Uefv -setrtomiss,0,0.2770001 era5_land_Ufv_"$((y))"09.nc era5_land_Uefv_"$((y))"09.nc
-#caculate possible bulk-volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
+#caculate possible volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
 cdo expr,'qb=5*0.277/9.81*1.22/2650*(Uefv*Uefv-0.277*0.277);' era5_land_Uefv_"$((y))"09.nc era5_land_qb_"$((y))"09.nc
 #mask all azimuths with effective friction velocity, effective friction azimuth
 cdo ifthen era5_land_qb_"$((y))"09.nc era5_land_A_"$((y))"09.nc era5_land_A_ifthen_"$((y))"09.nc
@@ -210,7 +210,7 @@ cdo -b 32 -chname,u10,A -mulc,57.2957805 -atan2 era5_land_hourly_10m_u_component
 cdo expr,'Ufv=U*0.4/ln(10/0.001);' era5_land_U_"$((y))"10.nc era5_land_Ufv_"$((y))"10.nc
 #mask wind speed ≤ threshold friction velocity, effective friction velocity
 cdo -chname,Ufv,Uefv -setrtomiss,0,0.2770001 era5_land_Ufv_"$((y))"10.nc era5_land_Uefv_"$((y))"10.nc
-#caculate possible bulk-volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
+#caculate possible volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
 cdo expr,'qb=5*0.277/9.81*1.22/2650*(Uefv*Uefv-0.277*0.277);' era5_land_Uefv_"$((y))"10.nc era5_land_qb_"$((y))"10.nc
 #mask all azimuths with effective friction velocity, effective friction azimuth
 cdo ifthen era5_land_qb_"$((y))"10.nc era5_land_A_"$((y))"10.nc era5_land_A_ifthen_"$((y))"10.nc
@@ -232,7 +232,7 @@ cdo -b 32 -chname,u10,A -mulc,57.2957805 -atan2 era5_land_hourly_10m_u_component
 cdo expr,'Ufv=U*0.4/ln(10/0.001);' era5_land_U_"$((y))"11.nc era5_land_Ufv_"$((y))"11.nc
 #mask wind speed ≤ threshold friction velocity, effective friction velocity
 cdo -chname,Ufv,Uefv -setrtomiss,0,0.2770001 era5_land_Ufv_"$((y))"11.nc era5_land_Uefv_"$((y))"11.nc
-#caculate possible bulk-volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
+#caculate possible volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
 cdo expr,'qb=5*0.277/9.81*1.22/2650*(Uefv*Uefv-0.277*0.277);' era5_land_Uefv_"$((y))"11.nc era5_land_qb_"$((y))"11.nc
 #mask all azimuths with effective friction velocity, effective friction azimuth
 cdo ifthen era5_land_qb_"$((y))"11.nc era5_land_A_"$((y))"11.nc era5_land_A_ifthen_"$((y))"11.nc
@@ -254,7 +254,7 @@ cdo -b 32 -chname,u10,A -mulc,57.2957805 -atan2 era5_land_hourly_10m_u_component
 cdo expr,'Ufv=U*0.4/ln(10/0.001);' era5_land_U_"$((y))"12.nc era5_land_Ufv_"$((y))"12.nc
 #mask wind speed ≤ threshold friction velocity, effective friction velocity
 cdo -chname,Ufv,Uefv -setrtomiss,0,0.2770001 era5_land_Ufv_"$((y))"12.nc era5_land_Uefv_"$((y))"12.nc
-#caculate possible bulk-volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
+#caculate possible volume flux, qb, where 5 is flux scaling parameter(martin and kok sa), 0.277 m/s is threshold friction velocity(Utfv=sqrt(g*d*rho_s/rho_f)/10, in which g = 9.81 m/s2 is gravity acceleration; d = 0.00036 m (0.36mm) the mean of median grain diameters for surface samples in the study of Martin and Kok (0.53±0.04 mm, 0.53±0.03 mm and 0.40±0.07 mm)21, Greeley et al. (0.23 mm)36, Namikas (0.25 mm)37 and Chinese deserts (the mean of median grain diameter for 432 dunes is 0.23±0.06 mm) in this study; rho_s=2650kg/m3 is sand density; rho_f=1.22kg/m3 is air density; fianally derive threshold friction velocity Utfv=0.277m/s)
 cdo expr,'qb=5*0.277/9.81*1.22/2650*(Uefv*Uefv-0.277*0.277);' era5_land_Uefv_"$((y))"12.nc era5_land_qb_"$((y))"12.nc
 #mask all azimuths with effective friction velocity, effective friction azimuth
 cdo ifthen era5_land_qb_"$((y))"12.nc era5_land_A_"$((y))"12.nc era5_land_A_ifthen_"$((y))"12.nc
@@ -318,9 +318,9 @@ cdo ifthen era5_land_hourly_10m_u_component_of_wind_"$((y))"01.nc era5_land_RFP_
 #consider wind intermittence, we set the above monthly settomiss flux to zero, in order to make zero to participate the subsequent mean calculation; then calculate yearly mean of hourly qb_N, multiply 365days*24hours*60minutes*60seconds, the unit m2/s is converted to m2/yr; finally mask by land
 cdo -chname,qb_N,RFP_N -mulc,31536000 -timmean -setmisstoc,0 era5_land_qb_N_"$((y))".nc era5_land_RFP_N_setmisstoc_timmean_mulc_chname_"$((y))".nc
 cdo ifthen era5_land_hourly_10m_u_component_of_wind_"$((y))"01.nc era5_land_RFP_N_setmisstoc_timmean_mulc_chname_"$((y))".nc era5_land_RFP_N_"$((y))".nc
-#calculate the resultant possible bulk-volume flux, RFP, the unit is coverted from m2/s to m2/yr
+#calculate the resultant possible volume flux, RFP, the unit is coverted from m2/s to m2/yr
 cdo -chname,RFP_E,RFP -sqrt -add -sqr -selname,RFP_E era5_land_RFP_E_"$((y))".nc -sqr -selname,RFP_N era5_land_RFP_N_"$((y))".nc era5_land_RFP_"$((y))".nc
-#calculate azimuth of the resultant possible bulk-volume flux, RFD, and convert to the normal
+#calculate azimuth of the resultant possible volume flux, RFD, and convert to the normal
 cdo -chname,RFP_E,RFD -addc,180 -mulc,57.2957805 -atan2 -mulc,-1 era5_land_RFP_E_"$((y))".nc -mulc,-1 era5_land_RFP_N_"$((y))".nc era5_land_RFD_flawed_"$((y))".nc
 #calculate flux variability index, FDV
 cdo -chname,RFP,FDV -div era5_land_RFP_"$((y))".nc era5_land_FP_"$((y))".nc era5_land_FDV_flawed_"$((y))".nc
