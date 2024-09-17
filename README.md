@@ -4,6 +4,7 @@ Simply, we use all effective friction velocities derived from the instantaneous 
 
 Specifically, FP is the sum of FPs to all azimuths; RFP is the resultant flux potential, represents net sand transport potential under the different wind directions; RFD is the resultant flux direction, represents net trend of sand flux; FDV is flux directional variability, defined as the ratio of RFP/FP, represents that the wind comes from the same direction (approximate to 1) or many directions (approximate to 0); FP_azimuth represents the azimuthal flux potential, the sum of azimuthal flux potentials is flux potential (FP); RFP_N or RFP_E represent that FPs to all azimuths are projected to the due-north and due-east directions in order to solve the RFP, RFD and the final FDV. All fluxes are the bulk-volume flux, the units are m2 yr-1.
 
+
 Main References
 
 1 Guoshuai Li, Lihai Tan, Bao Yang, Tao Che, Guangcai Feng, Fredrik Charpentier Ljungqvist, Yayong Luo, Heqiang Du, Hui Zhao, Ying Zhang, Chunlin Huang, Ning Huang, Wenjun Tang, Rui Jin, Xin Li*. Site selection of desert solar farms based on heterogeneous sand flux. npj Climate and Atmospheric Science 7, 61 (2024).
