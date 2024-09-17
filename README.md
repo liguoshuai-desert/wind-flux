@@ -7,7 +7,7 @@ Specifically, FP is the sum of FPs to all azimuths; RFP is the resultant flux po
 
 Main References
 
-1 Guoshuai Li, Lihai Tan, Bao Yang, Tao Che, Guangcai Feng, Fredrik Charpentier Ljungqvist, Yayong Luo, Heqiang Du, Hui Zhao, Ying Zhang, Chunlin Huang, Ning Huang, Wenjun Tang, Rui Jin, Xin Li*. Site selection of desert solar farms based on heterogeneous sand flux. npj Climate and Atmospheric Science 7, 61 (2024).
+1 **Guoshuai Li**, Lihai Tan, Bao Yang, Tao Che, Guangcai Feng, Fredrik Charpentier Ljungqvist, Yayong Luo, Heqiang Du, Hui Zhao, Ying Zhang, Chunlin Huang, Ning Huang, Wenjun Tang, Rui Jin, Xin Li*. [Site selection of desert solar farms based on heterogeneous sand flux](https://doi.org/10.1038/s41612-024-00606-4). *npj Climate and Atmospheric Science* 7, 61 (2024).
 
 Other references
 
