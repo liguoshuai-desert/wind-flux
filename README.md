@@ -4,13 +4,16 @@ Simply, we use all effective friction velocities derived from the instantaneous 
 
 Specifically, FP is the sum of FPs to all azimuths; RFP is the resultant flux potential, represents net sand transport potential under the different wind directions; RFD is the resultant flux direction, represents net trend of sand flux; FDV is flux directional variability, defined as the ratio of RFP/FP, represents that the wind comes from the same direction (approximate to 1) or many directions (approximate to 0); FP_azimuth represents the azimuthal flux potential, the sum of azimuthal flux potentials is flux potential (FP); RFP_N or RFP_E represent that FPs to all azimuths are projected to the due-north and due-east directions in order to solve the RFP, RFD and the final FDV. All fluxes are the bulk-volume flux, the units are m2 yr-1.
 
+Main References
 
-References
+1 Guoshuai Li, Lihai Tan, Bao Yang, Tao Che, Guangcai Feng, Fredrik Charpentier Ljungqvist, Yayong Luo, Heqiang Du, Hui Zhao, Ying Zhang, Chunlin Huang, Ning Huang, Wenjun Tang, Rui Jin, Xin Li*. Site selection of desert solar farms based on heterogeneous sand flux. npj Climate and Atmospheric Science 7, 61 (2024).
 
-1 Gunn, A., Wanker, M., Lancaster, N., Edmonds, D. A., Ewing, R. C. & Jerolmack, D. J. 2021. Circadian rhythm of dune-field activity. Geophysical Research Letters, 48, e2020GL090924.
+Other references
 
-2 Chanteloube, C., Barrier, L., Derakhshani, R., Gadal, C., Braucher, R., Payet, V., Léanni, L. & Narteau, C. 2022. Source-to-sink aeolian fluxes from arid landscape dynamics in the Lut Desert. Geophysical Research Letters, 49, e2021GL097342. 
+2 Gunn, A., Wanker, M., Lancaster, N., Edmonds, D. A., Ewing, R. C. & Jerolmack, D. J. 2021. Circadian rhythm of dune-field activity. Geophysical Research Letters, 48, e2020GL090924.
 
-3 Gunn, A., Casasanta, G., Di Liberto, L., Falcini, F., Lancaster, N. & Jerolmack, D. J. 2022a. What sets aeolian dune height? Nature Communications, 13, 2401. 
+3 Chanteloube, C., Barrier, L., Derakhshani, R., Gadal, C., Braucher, R., Payet, V., Léanni, L. & Narteau, C. 2022. Source-to-sink aeolian fluxes from arid landscape dynamics in the Lut Desert. Geophysical Research Letters, 49, e2021GL097342. 
 
-4 Gunn, A., East, A. & Jerolmack, D. J. 2022b. 21st-century stagnation in unvegetated sand-sea activity. Nature Communications, 13, 3670.
+4 Gunn, A., Casasanta, G., Di Liberto, L., Falcini, F., Lancaster, N. & Jerolmack, D. J. 2022a. What sets aeolian dune height? Nature Communications, 13, 2401. 
+
+5 Gunn, A., East, A. & Jerolmack, D. J. 2022b. 21st-century stagnation in unvegetated sand-sea activity. Nature Communications, 13, 3670.
