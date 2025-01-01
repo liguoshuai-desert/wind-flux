@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# Author : Guoshuai Li
+# Contact: GUOSHUAI Li  <liguoshuai@outlook.com> <liguoshuai@lzb.ac.cn>
+# Copyright (C) 2024
+
 for ((y=1940; y<=2022;++y))
 do
    echo $y 
